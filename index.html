@@ -45,33 +45,40 @@
                     <button type="button" class="btn btn-dark text-left my-input algo-btn" id="greedy">Greedy</button>
                     <button type="button" class="btn btn-secondary text-left my-input algo-btn" id="dfs">DFS</button>
                 </div>
-    
+
+                
                 <br>
                 <br>
+                <br>
+                
                 <div>
                     <h4>draw graph</h4>
                 </div>
+                <div class="btn-group-vertical">
+                    <h6 id="rate-text">wall rate: </h6>
+                    <input type="range" min="10" max="50" value="30" step="10" class="slider my-input" id="rate">
+                    <button type="button" class="btn btn-warning text-left my-input" id="random">Random</button>
+                    <button type="button" class="btn btn-danger text-left my-input" id="reset">Reset graph</button>
+                </div>
+
+                <br>
+                <br>
+
                 <div class="btn-group-vertical paint">
                     <label class="btn btn-primary active text-left">
-                        <input class="my-input" type="radio" name="draw" id="src" checked> src node
+                        <input class="my-input" type="radio" name="draw" id="src" checked> source node
                     </label>
                     <label class="btn btn-danger text-left">
                         <input class="my-input" type="radio" name="draw" id="dst"> dst node
                     </label>
                     <label class="btn btn-dark text-left">
-                        <input class="my-input" type="radio" name="draw" id="wall"> wall node
+                        <input class="my-input" type="radio" name="draw" id="wall"> wall
                     </label>
                     <label class="btn btn-secondary text-left">
-                        <input class="my-input" type="radio" name="draw" id="del"> delete node
+                        <input class="my-input" type="radio" name="draw" id="del"> reset node
                     </label>
                 </div>
-                <br>
-                <div class="btn-group-vertical">
-                    <h6 id="rate-text">wall rate: </h6>
-                    <input type="range" min="10" max="50" value="30" step="10" class="slider my-input" id="rate">
-                    <button type="button" class="btn btn-warning text-left my-input" id="random">Random</button>
-                    <button type="button" class="btn btn-danger text-left my-input" id="reset">Reset</button>
-                </div>
+                
             </div>
             <div class="col-lg-2 col-sm-2">
                 <canvas class="graph" id="canvas" width="799" height="590"></canvas>                
