@@ -379,7 +379,7 @@ function dfs(){
         let w = s.pop();
         visited.push(w);
         neighbors(rects[w]).forEach((element)=>{
-            if(!(visited).includes(element)){
+            if(!(visited.includes(element) || s.data.includes(element))){
                 s.push(element);
             }
         })
