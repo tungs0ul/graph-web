@@ -1,0 +1,61 @@
+body {
+    background-color: #f6f6f6;
+}
+
+canvas {
+    border: solid 1px;
+}
+
+
+h1 {
+    margin: 20px auto 20px;
+    text-align: center; 
+    color: #ec0101;
+}
+
+.graph {
+    background-color: #C0C0C0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    display: block;
+}
+
+.buttons {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+.text {
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+}
+
+#visited {
+    color: #7a7a0c;
+}
+
+#distance {
+    color: #00ff00;
+}
+
+#time {
+    color: #006a71;
+}
+
+.algo {
+    text-align: center;
+    margin-right: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#src {
+    text-align: left;
+}
