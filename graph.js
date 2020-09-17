@@ -205,12 +205,20 @@ function start(algo){
         alert("please set up source and destinatin nodes");
     }
     else {
+        $("#distance").text("Distance: 0");
+        $(".my-input").prop("disabled", true);
+        $("#time").text("Time: 0");
         rects.forEach((element)=>{
             if(element.needReset){
                 element.reset();
             }
         })
-        pathFiding(algo);
+        if(algo === "greedy" || algo === "astar" || algo === "dijkstra"){
+            pathFiding(algo);
+        }
+        else if(algo === "dfs"){
+            dfs();
+        }
     }
 }
 
@@ -264,16 +272,14 @@ async function updateTime(start, delay=1000){
 }
 
 function pathFiding(algo){
-    $("#distance").text("Distance: 0");
-    $(".my-input").prop("disabled", true);
-    $("#time").text("Time: 0");
     let start = new Date().getTime();
+    let counting = true;
     setInterval(function(){
         if(counting){
             updateTime(start);
         }
     });
-    let counting = true;
+
     let distances = {};
     let prev = {};
     let result = [];
@@ -351,4 +357,101 @@ function pathFiding(algo){
         $(".my-input").prop("disabled", false);
         $("#distance").text("Distance: " + (result.length-1));
     }, visited.length * 10 + result.length * 10)
+}
+
+function dfs(){
+    let start = new Date().getTime();
+    let counting = true;
+    setInterval(function(){
+        if(counting){
+            updateTime(start);
+        }
+    });
+
+    let s = new Stack();
+    let delay = 100;
+    neighbors(src).forEach((element)=>{
+        s.push(element);
+    })
+    let visited = [];
+    let found = false;
+    while(!s.isEmpty()){
+        let w = s.pop();
+        visited.push(w);
+        neighbors(rects[w]).forEach((element)=>{
+            if(!(visited).includes(element)){
+                s.push(element);
+            }
+        })
+        if(w === dst.index){
+            found = true;
+            break;
+        }
+        else if(w != src.index){
+            delayChangeColor(w, delay, "rgb(122,122,12)")
+            updateVisited(delay, visited.length);
+            delay += 10;
+        }
+    }
+
+    setTimeout(function(){
+        $(".my-input").prop("disabled", false);
+        counting = false;
+        if(visited.includes(dst.index)){
+            $("#distance").text("Distance: " + (visited.length-1));
+        }
+        else {
+            $("#distance").text("Distance: -1");
+        }
+    }, visited.length * 10);
+}
+
+class Stack {
+    constructor(){
+        this.data = [];
+        this.top = 0;
+    }
+
+    push(element) {
+      this.data[this.top] = element;
+      this.top = this.top + 1;
+    }
+
+   length() {
+      return this.top;
+   }
+
+   peek() {
+      return this.data[this.top-1];
+   }
+
+   isEmpty() {
+     return this.top === 0;
+   }
+
+   pop() {
+    if( this.isEmpty() === false ) {
+       this.top = this.top -1;
+       return this.data.pop(); 
+     }
+   }
+
+   print() {
+      var top = this.top - 1;
+      while(top >= 0) { 
+          console.log(this.data[top]);
+           top--;
+       }
+    }
+
+    reverse() {
+       this._reverse(this.top - 1 );
+    }
+
+    _reverse(index) {
+       if(index != 0) {
+          this._reverse(index-1);
+       }
+       console.log(this.data[index]);
+    }
 }
