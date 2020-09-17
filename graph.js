@@ -205,7 +205,7 @@ function start(algo){
         alert("please set up source and destinatin nodes");
     }
     else {
-        $("#distance").text("Distance: 0");
+        $("#distance").text("Path: 0");
         $(".my-input").prop("disabled", true);
         $("#time").text("Time: 0");
         rects.forEach((element)=>{
@@ -355,7 +355,7 @@ function pathFiding(algo){
 
     setTimeout(function(){
         $(".my-input").prop("disabled", false);
-        $("#distance").text("Distance: " + (result.length-1));
+        $("#distance").text("Path: " + (result.length-1));
     }, visited.length * 10 + result.length * 10)
 }
 
@@ -398,10 +398,10 @@ function dfs(){
         $(".my-input").prop("disabled", false);
         counting = false;
         if(visited.includes(dst.index)){
-            $("#distance").text("Distance: " + (visited.length-1));
+            $("#distance").text("Path: " + (visited.length-1));
         }
         else {
-            $("#distance").text("Distance: -1");
+            $("#distance").text("Path: -1");
         }
     }, visited.length * 10);
 }

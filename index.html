@@ -18,17 +18,19 @@
 
         <div class="text">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3"></div>
+
+                <div class="col-md-2">
                     <h4 id="visited">
                         Visited: 0
                     </h4>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <h4 id="distance">
-                        Distance: 0
+                        Path: 0
                     </h4>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <h4 id="time">
                         Time: 0
                     </h4>
@@ -49,10 +51,9 @@
                 
                 <br>
                 <br>
-                <br>
                 
                 <div>
-                    <h4>draw graph</h4>
+                    <h4>graph</h4>
                 </div>
                 <div class="btn-group-vertical">
                     <h6 id="rate-text">wall rate: </h6>
@@ -62,9 +63,11 @@
                 </div>
 
                 <br>
-                <br>
+
+                <h6>click to draw</h6>
 
                 <div class="btn-group-vertical paint">
+
                     <label class="btn btn-primary active text-left">
                         <input class="my-input" type="radio" name="draw" id="src" checked> source node
                     </label>
@@ -80,8 +83,8 @@
                 </div>
                 
             </div>
-            <div class="col-lg-2 col-sm-2">
-                <canvas class="graph" id="canvas" width="799" height="590"></canvas>                
+            <div class="col-lg-8 col-sm-4">
+                <canvas class="graph" id="canvas" width="799" height="622"></canvas>                
             </div>
         </div>
 

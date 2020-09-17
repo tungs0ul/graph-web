@@ -13,6 +13,14 @@ h1 {
     color: #ec0101;
 }
 
+h4 {
+    color: #ff9a76;
+}
+
+h6 {
+    color: silver;
+}
+
 .graph {
     background-color: #C0C0C0;
     margin-left: auto;
@@ -58,4 +66,9 @@ h1 {
 
 #src {
     text-align: left;
+}
+
+.btn-group-vertical > button{
+    margin-bottom: 3px;
+    border-radius: 3px !important;
 }
