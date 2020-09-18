@@ -127,8 +127,6 @@ function randomSrcDst(){
     }
 }
 
-randomSrcDst();
-
 function random(){
     for(let i=0; i<rects.length; ++i){
         if(rects[i] != src && rects[i] != dst){
@@ -142,6 +140,7 @@ function random(){
     randomSrcDst();
 }
 
+random();
 
 $("#random").click(random);
 
