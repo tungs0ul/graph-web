@@ -1,6 +1,6 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-const size = 20;
+var size = 15;
 const randomRate = 0.3;
 var rects = []
 var src=null, dst=null;
@@ -133,9 +133,10 @@ function random(){
 random();
 
 function init(){
-    let x = window.innerWidth - 10;
+    let x = window.innerWidth - 5;
     canvas.width = x - x % (size + 1) - 1;
-    let y = window.innerHeight - $("#navbar-div").height() - 11;
+
+    let y = window.innerHeight - $("#navbar-div").height() - 10;
     canvas.height = y - y % (size + 1) - 1;
     initNode();
 }

@@ -1,5 +1,5 @@
 body {
-    background-color: #f6f6f6;
+    background-color: silver;
 }
 
 canvas {
@@ -69,9 +69,17 @@ h6 {
 }
 
 canvas {
-    margin: 5px;
+    margin: 5px 0 0 0;
+}
+
+#canvas-div {
+    text-align: center;
+    background-color: silver;
 }
 
 .navbar-toggler { 
     border-color: lightgreen; 
 } 
+.navbar {
+    margin: 0;
+}
