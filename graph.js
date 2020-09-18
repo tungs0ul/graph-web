@@ -240,7 +240,7 @@ function start(algo){
         alert("please set up destination node");
     }
     else {
-        $("#distance").text("No Path");
+        $("#distance").text("Calculating");
         $(".my-input").prop("disabled", true);
         $("#time").text("Time: 0 s");
         rects.forEach((element)=>{
