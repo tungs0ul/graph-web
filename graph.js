@@ -382,7 +382,7 @@ function pathFiding(algo){
         counting = false;
         let delayMs = 10;
         for(let i = result.length - 2; i >= 0; --i){
-            delayChangeColor(result[i], delayMs, "rgba(0, 255, 0, 0.7)");
+            delayChangeColor(result[i], delayMs, "rgba(0, 255, 0)");
             delayMs += 10;
         }
     }, visited.length * 10);
