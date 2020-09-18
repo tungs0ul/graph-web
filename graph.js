@@ -296,7 +296,7 @@ async function delayChangeColor(current, delay,color="rgba(122,122,12, 0.5)"){
 
 async function updateVisited(delay, visited){
     await sleep(delay);
-    $("#visited").text("Visited: " + visited);
+    $("#visited").text("Visited: " + (visited-1));
 }
 
 async function updateTime(start, delay=1000){
