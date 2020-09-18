@@ -239,9 +239,9 @@ function start(algo){
         alert("please set up destination node");
     }
     else {
-        $("#distance").text("Path: 0");
+        $("#distance").text("No Path");
         $(".my-input").prop("disabled", true);
-        $("#time").text("Time: 0");
+        $("#time").text("Time: 0 s");
         rects.forEach((element)=>{
             if(element.needReset){
                 element.reset();
@@ -263,6 +263,11 @@ $(".algo-btn").click(function () {
 $('.navbar-collapse .algo-btn').click(function(){
     $(".navbar-collapse").collapse('hide');
 });
+
+$('.navbar-collapse .draw-btn').click(function(){
+    $(".navbar-collapse").collapse('hide');
+});
+
 
 
 $(document).keypress(function(event){
@@ -306,7 +311,7 @@ async function updateVisited(delay, visited){
 async function updateTime(start, delay=1000){
     await sleep(delay);
     let x = Math.floor((new Date().getTime() - start)/1000);
-    $("#time").text("Time: " + x);
+    $("#time").text("Time: " + x + "s");
 }
 
 function pathFiding(algo){
@@ -393,7 +398,12 @@ function pathFiding(algo){
 
     setTimeout(function(){
         $(".my-input").prop("disabled", false);
-        $("#distance").text("Path: " + (result.length-1));
+        if(!result.length){
+            $("#distance").text("No Path");
+        }
+        else {
+            $("#distance").text("Path: " + (result.length-1));   
+        }
     }, visited.length * 10 + result.length * 10)
 }
 
@@ -442,7 +452,7 @@ function dfs(){
             $("#distance").text("Path: " + (visited.length-1));
         }
         else {
-            $("#distance").text("Path: -1");
+            $("#distance").text("No Path");
         }
     }, visited.length * 10);
 }
