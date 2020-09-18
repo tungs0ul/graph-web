@@ -12,83 +12,82 @@
     <title>Thanh Tung Phan</title>
   </head>
   <body>
-    <div class="container-fluid">
-        <div><h1>Path Fiding Visualization</h1>
-        </div>
 
-        <div class="text">
-            <div class="row">
-                <div class="col-md-3"></div>
+    <div class="container-fluid-nav text-center" id="navbar-div">
+        <nav class="navbar navbar-expand-lg navbar-primary bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle btn-outline-success my-input" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Visualize
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="btn btn-outline-primary btn-block text-left my-input algo-btn" id="dijkstra">Dijkstra BFS</a>
+                      <a class="btn btn-outline-success btn-block text-left my-input algo-btn" id="astar">Astar A*</a>
+                      <a class="btn btn-outline-dark btn-block text-left my-input algo-btn" id="greedy">Greedy</a>
+                      <a class="btn btn-outline-secondary btn-block text-left my-input algo-btn" id="dfs">DFS</a>
+                    </div>
+                </li>
 
-                <div class="col-md-2">
-                    <h4 id="visited">
-                        Visited: 0
-                    </h4>
-                </div>
-                <div class="col-md-2">
-                    <h4 id="distance">
-                        Path: 0
-                    </h4>
-                </div>
-                <div class="col-md-2">
-                    <h4 id="time">
-                        Time: 0
-                    </h4>
-                </div>
-            </div>
-        </div>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-outline-warning my-input" id="random">Random</button>
+                </li>
+    
+                <li class="nav-item">
+                    <button class="btn btn-outline-danger my-input" id="reset">Reset Graph</button>
+                </li>
 
-        <div class="row menu">
-            <div class="col-sm-2 algo"> 
-                <div class="btn-group-vertical">
-                    <h4>pick an algo</h4>
-                    <button type="button" class="btn btn-primary btn-block text-left my-input algo-btn" id="dijkstra">Dijkstra BFS</button>
-                    <button type="button" class="btn btn-success text-left my-input algo-btn" id="astar">Astar</button>
-                    <button type="button" class="btn btn-dark text-left my-input algo-btn" id="greedy">Greedy</button>
-                    <button type="button" class="btn btn-secondary text-left my-input algo-btn" id="dfs">DFS</button>
-                </div>
-
-                
-                <br>
-                <br>
-                
-                <div>
-                    <h4>graph</h4>
-                </div>
-                <div class="btn-group-vertical">
-                    <h6 id="rate-text">wall rate: </h6>
-                    <input type="range" min="10" max="50" value="30" step="10" class="slider my-input" id="rate">
-                    <button type="button" class="btn btn-warning text-left my-input" id="random">Random wall</button>
-                    <button type="button" class="btn btn-danger text-left my-input" id="reset">Reset graph</button>
-                </div>
-
-                <br>
-
-                <h6>click to draw</h6>
-
-                <div class="btn-group-vertical paint">
-
-                    <label class="btn btn-primary active text-left">
+                <li class="nav-item">
+                    <label class="btn btn-outline-dark active">
                         <input class="my-input" type="radio" name="draw" id="src" checked> source node
                     </label>
-                    <label class="btn btn-danger text-left">
+                </li>
+
+                <li class="nav-item">
+                    <label class="btn btn-outline-dark active">
                         <input class="my-input" type="radio" name="draw" id="dst"> dst node
                     </label>
-                    <label class="btn btn-dark text-left">
+                </li>
+
+                <li class="nav-item">
+                    <label class="btn btn-outline-dark active">
                         <input class="my-input" type="radio" name="draw" id="wall"> wall
                     </label>
-                    <label class="btn btn-secondary text-left">
+                </li>
+
+                <li class="nav-item">
+                    <label class="btn btn-outline-dark active">
                         <input class="my-input" type="radio" name="draw" id="del"> reset node
                     </label>
-                </div>
-                
-            </div>
-            <div class="col-lg-8 col-sm-4">
-                <canvas class="graph" id="canvas" width="799" height="622"></canvas>                
-            </div>
-        </div>
+                </li>
 
-    </div>
+                <li class="nav-item">
+                    <label class="btn btn-outline-dark active" id="distance">
+                        Path: 0
+                    </label>
+                </li>
+
+                <li class="nav-item">
+                    <label class="btn btn-outline-dark active" id="visited">
+                        Visited: 0
+                    </label>
+                </li>
+
+                <li class="nav-item">
+                    <label class="btn btn-outline-dark active" id="time">
+                        Time: 0
+                    </label>
+                </li>             
+              </ul>
+            </div>
+          </nav>
+      </div>
+    <canvas id="canvas"></canvas>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -97,3 +96,4 @@
     <script src="graph.js"></script>
     </body>
 </html>
+

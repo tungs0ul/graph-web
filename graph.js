@@ -1,22 +1,9 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-
+const size = 20;
+const randomRate = 0.3;
 var rects = []
-var position;
 var src=null, dst=null;
-const size = 15;
-
-var slider = document.getElementById("rate");
-var output = document.getElementById("rate-text");
-output.innerHTML = "wall rate: "  + slider.value + "%"
-var randomRate = parseInt(slider.value, 10) / 100;
-
-slider.oninput = function() {
-    output.innerHTML = "wall rate: "  + this.value + "%";
-    randomRate = parseInt(this.value, 10) / 100;
-}
-
-$("#src").prop("checked", true);
 
 class Node {
     constructor(x, y, index) {
@@ -105,11 +92,15 @@ function neighbors(node){
     return result
 }
 
-for(let i=0; i<canvas.width; i+=size+1){
-    for(let j=0; j<canvas.height; j+=size+1){
-        let node = new Node(i, j, rects.length);
-        rects.push(node);
-        node.draw();
+init();
+
+function initNode(){
+    for(let i=0; i<canvas.width; i+=size+1){
+        for(let j=0; j<canvas.height; j+=size+1){
+            let node = new Node(i, j, rects.length);
+            rects.push(node);
+            node.draw();
+        }
     }
 }
 
@@ -139,8 +130,26 @@ function random(){
     }
     randomSrcDst();
 }
-
 random();
+
+function init(){
+    let x = window.innerWidth - 10;
+    canvas.width = x - x % (size + 1) - 1;
+    let y = window.innerHeight - $("#navbar-div").height() - 11;
+    canvas.height = y - y % (size + 1) - 1;
+    initNode();
+}
+
+window.addEventListener('resize', function(){
+    if(!$("#astar").prop("disabled")){
+        rects = [];
+        src = null;
+        dst = null;
+        init();
+        random();
+    }
+    
+});
 
 $("#random").click(random);
 
@@ -157,9 +166,9 @@ function getMousePosition(canvas, event){
     return findNode(x, y);
 }
 
+var drawing = false;
 canvas.addEventListener("mousedown", function(event){
-    let tmp = $("#astar").prop("disabled");
-    if(!tmp){
+    if(!$("#astar").prop("disabled")){
         if($('#src').is(':checked')){
             if(src){
                 src.reset();
@@ -182,6 +191,7 @@ canvas.addEventListener("mousedown", function(event){
         }
         else if($('#wall').is(':checked')){
             let rect = getMousePosition(canvas, event);
+            drawing = true;
             if(rect != src && rect != dst){
                 rect.deactive();
             }
@@ -199,9 +209,34 @@ canvas.addEventListener("mousedown", function(event){
     }
 });
 
+canvas.addEventListener("mouseup", function(event){
+    drawing = false;
+})
+
+canvas.addEventListener("mousemove", function(event){
+    if(drawing){
+        let rect = getMousePosition(canvas, event);
+        if(drawing){
+            if(rect === src){
+                src = null;
+            }
+            else if(rect === dst){
+                dst = null;
+            }
+            rect.deactive();
+        }
+    }
+})
+
 function start(algo){
-    if(!src || !dst){
-        alert("please set up source and destinatin nodes");
+    if(!src && !dst){
+        alert("please set up source and destination nodes");
+    }
+    else if(!src){
+        alert("please set up source node");
+    }
+    else if(!dst){
+        alert("please set up destination node");
     }
     else {
         $("#distance").text("Path: 0");
@@ -254,7 +289,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function delayChangeColor(current, delay,color="rgb(122,122,12)"){
+async function delayChangeColor(current, delay,color="rgba(122,122,12, 0.5)"){
     await sleep(delay);
     rects[current].changeColor(color, true);
 }
@@ -347,7 +382,7 @@ function pathFiding(algo){
         counting = false;
         let delayMs = 10;
         for(let i = result.length - 2; i >= 0; --i){
-            delayChangeColor(result[i], delayMs, "rgb(0, 255, 0)");
+            delayChangeColor(result[i], delayMs, "rgba(0, 255, 0, 0.7)");
             delayMs += 10;
         }
     }, visited.length * 10);
@@ -381,13 +416,16 @@ function dfs(){
             if(!(visited.includes(element) || s.data.includes(element))){
                 s.push(element);
             }
+            if(element === dst.index){
+                found = true;
+                while(!s.isEmpty()){
+                    s.pop();
+                }
+            }
         })
-        if(w === dst.index){
-            found = true;
-            break;
-        }
-        else if(w != src.index){
-            delayChangeColor(w, delay, "rgb(122,122,12)")
+        
+        if(w != src.index){
+            delayChangeColor(w, delay, "rgba(122,122,12,0.5)")
             updateVisited(delay, visited.length);
             delay += 10;
         }
@@ -396,7 +434,7 @@ function dfs(){
     setTimeout(function(){
         $(".my-input").prop("disabled", false);
         counting = false;
-        if(visited.includes(dst.index)){
+        if(found){
             $("#distance").text("Path: " + (visited.length-1));
         }
         else {

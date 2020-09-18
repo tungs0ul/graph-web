@@ -13,10 +13,6 @@ h1 {
     color: #ec0101;
 }
 
-h4 {
-    color: #ff9a76;
-}
-
 h6 {
     color: silver;
 }
@@ -46,7 +42,7 @@ h6 {
 }
 
 #visited {
-    color: #7a7a0c;
+    color: #ffd900;
 }
 
 #distance {
@@ -54,7 +50,7 @@ h6 {
 }
 
 #time {
-    color: #006a71;
+    color: #2ba3ac;
 }
 
 .algo {
@@ -68,7 +64,10 @@ h6 {
     text-align: left;
 }
 
-.btn-group-vertical > button{
-    margin-bottom: 3px;
-    border-radius: 3px !important;
+.btn {
+    margin-left: 5px;
+}
+
+canvas {
+    margin: 5px;
 }
