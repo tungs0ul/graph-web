@@ -260,6 +260,10 @@ $(".algo-btn").click(function () {
     start(this.id);
 })
 
+$('.navbar-collapse .algo-btn').click(function(){
+    $(".navbar-collapse").collapse('hide');
+});
+
 
 $(document).keypress(function(event){
     if(event.keyCode === 13){

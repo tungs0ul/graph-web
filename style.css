@@ -71,3 +71,7 @@ h6 {
 canvas {
     margin: 5px;
 }
+
+.navbar-toggler { 
+    border-color: lightgreen; 
+} 
