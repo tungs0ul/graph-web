@@ -1,6 +1,6 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-var size = 15;
+const size = 20;
 const randomRate = 0.3;
 var rects = []
 var src=null, dst=null;
