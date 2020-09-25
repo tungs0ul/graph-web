@@ -507,3 +507,5 @@ class Stack {
        console.log(this.data[index]);
     }
 }
+
+alert('click on "Visualize" and pick an algorithsm!')
