@@ -508,4 +508,4 @@ class Stack {
     }
 }
 
-alert('click on "Visualize" and pick an algorithsm!')
+alert('click on "Visualize" and pick an algorithm!')
